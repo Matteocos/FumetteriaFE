@@ -14,11 +14,11 @@ export class ListaFumettiService {
 
   stampaFumetti() {
 
-    return this.http.post<any>("http://2.44.173.210:7080/comic-be/api/comic/search/", {}); 
+    return this.http.get<any>("http://localhost:8080/product/list", {}); 
 
   }
 
-  updateFumetti(id: string, nome: string, description: string, type: string, authorID: number, categoryID: number ) {
+  updateFumetti(id: string, nome: string, description: string, type: string, authorID: number, categoryName: string ) {
     
     const user = new UpdateFumettoCommand;
 
@@ -27,7 +27,7 @@ export class ListaFumettiService {
     user.description = description;
     user.type = type;
     user.idAuthor = authorID;
-    user.idCategory = categoryID;
+    user.nameCategory = categoryName;
     user.photo = null;
 
     return this.http.put<any>("http://2.44.173.210:7080/comic-be/api/comic/update/", user);

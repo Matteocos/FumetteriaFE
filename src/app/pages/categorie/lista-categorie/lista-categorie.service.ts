@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UpdateCategoriaCommand } from 'src/app/models/categoria/categoria-command';
+import { CategoriaListDTO } from 'src/app/models/categoria/categoria-DTO';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ListaCategorieService {
 
   stampaCategorie() {
 
-    return this.http.post<any>("http://2.44.173.210:7080/comic-be/api/category/search/", {}); 
+    return this.http.get<CategoriaListDTO>("http://localhost:8080/category/list", {}); 
 
   }
 

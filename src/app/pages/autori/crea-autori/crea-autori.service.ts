@@ -12,16 +12,16 @@ export class CreaAutoriService {
 
   creaAutore(name: string, surname: string) {
     
-    alert(surname);
+    
 
-    const user = new AuthorCommand;
+    const autor = new AuthorCommand;
 
-    user.name = name;
-    user.surname = surname;
+    autor.name = name;
+    autor.surname = surname;
 
-    alert(user.surname);
+    alert("aggiunto autore : "+autor.name+" "+autor.surname);
 
-    return this.http.post<any>("http://2.44.173.210:7080/comic-be/api/author/create", user);
+    return this.http.post<any>("http://localhost:8080/autor/create",autor );
 
   }
   

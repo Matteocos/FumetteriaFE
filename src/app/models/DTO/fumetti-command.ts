@@ -4,7 +4,7 @@ export class FumettoCommand {
     description: string;
     type: string;
     idAuthor: number;
-    idCategory: number;
+    nameCategory: string;
     photo: any;
 
 }
@@ -30,7 +30,7 @@ export class UpdateFumettoCommand{
     description: string;
     type: string;
     idAuthor: number;
-    idCategory: number;
+   nameCategory:string;
     photo: any;
 
 }

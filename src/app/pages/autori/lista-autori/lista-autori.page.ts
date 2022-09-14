@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { List, AuthorListDTO } from 'src/app/models/autori/author-dto';
+import { UpdateAutoreCommand } from 'src/app/models/autori/author-command';
+import { List, AuthorListDTO, AuthorDTO } from 'src/app/models/autori/author-dto';
 import { ListaAutoriService } from './lista-autori.service';
 
 @Component({
@@ -125,12 +126,13 @@ export class ListaAutoriPage implements OnInit {
         
       console.log("Entra");
 
-      const data: List = resp;
+      const data:  AuthorDTO= resp;
 
       console.log(data);
 
       alert("È stato fatto l'update di " + data.name + " " + data.surname + "!");
-      
+      this.cambiaPagina()
+      this.reset()
     }, error => {
       this.password=""; //grazie al nostro fratellino indiano
       alert("Si è verificato un errore nell'update dell'autore");

@@ -13,7 +13,7 @@ export class CreaFumettoPage implements OnInit {
   description: string;
   type: string;
   authorID: number;
-  categoryID: number;
+  categoryName: string;
 
   disabilita: boolean = false;
 
@@ -34,7 +34,7 @@ export class CreaFumettoPage implements OnInit {
     
     console.log("Entra");
 
-    this.user.creaFumetto(this.name, this.description, this.type, this.authorID , this.categoryID).subscribe(resp => {
+    this.user.creaFumetto(this.name, this.description, this.type, this.authorID , this.categoryName).subscribe(resp => {
 
       const data: FumettiDto = resp;
 
@@ -57,7 +57,7 @@ export class CreaFumettoPage implements OnInit {
     this.description = "";
     this.type = "";
     this.authorID = null;
-    this.categoryID = null;
+    this.categoryName = null;
 
   }
 

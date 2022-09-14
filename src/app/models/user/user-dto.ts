@@ -3,7 +3,7 @@ export class UserDTO {
     id: number;
     name: string;
     surname: string;
-    email: string;
+    username: string;
 
 }
 
@@ -18,6 +18,6 @@ export class List {
     id: string;
     name: string;
     surname: string;
-    email: string;
+    username: string;
 
 }

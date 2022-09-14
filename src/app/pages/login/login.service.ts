@@ -9,13 +9,13 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
   
-  login( email: string, password: string) {
+  login( username: string, password: string) {
     
     const user = new UserCommand;
-    user.email = email;
+    user.username = username;
     user.password = password;
 
-    return this.http.post<any>("http://2.44.173.210:7080/comic-be/api/login/login", user);
+    return this.http.post<any>("http://localhost:8080/login", user);
 
   }
 

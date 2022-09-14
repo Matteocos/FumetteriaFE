@@ -15,7 +15,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginPage implements OnInit {
 
-  email:string;
+  username:string;
   password:string;
 
   formLogin;
@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
     }
       
 
-    if (this.formLogin.get("email").valid && this.formLogin.get("password").valid)
+    if (this.formLogin.get("username").valid && this.formLogin.get("password").valid)
       this.disabilita = false;
     else
       this.disabilita = true;
@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
 
   loginServer(){
 
-      this.user.login(this.email, this.password).subscribe(resp => {
+      this.user.login(this.username, this.password).subscribe(resp => {
         
         console.log("Entra");
 
@@ -100,8 +100,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
 
       this.formLogin = this.fb.group({
-        email: ['',[Validators.required, Validators.email]],
-        password:['',[Validators.pattern,Validators.required/*,Validators.minLength(4)*/]],
+        username: ['',[Validators.required, Validators.email]],
+        password:['',[Validators.pattern,Validators.required,Validators.minLength(4)]],
     })
 
   }

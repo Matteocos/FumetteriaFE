@@ -58,10 +58,11 @@ export class CreaAutoriPage implements OnInit {
       const data: UserDTO = resp;
 
       console.log(data);
-
+      location.href = '/lista-autori'
+      
       this.reset();
 
-      alert("È stato aggiunto " + data.name + " " + data.surname + "!");
+     
       
     }, error => {
       //grazie al nostro fratellino indiano

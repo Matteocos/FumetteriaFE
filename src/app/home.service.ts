@@ -10,7 +10,7 @@ export class ListaService {
   constructor(private http:HttpClient) { }
 
   listaFumetti(){
-    return this.http.post("http://2.44.173.210:7080/comic-be/api/comic/search",{});
+    return this.http.get<any>("http://localhost:8080/product/list",{});
   }
 
 }

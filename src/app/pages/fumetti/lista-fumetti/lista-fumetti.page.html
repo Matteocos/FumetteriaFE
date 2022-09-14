@@ -62,8 +62,8 @@
       <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;" class="td" class="ion-text-left"> {{item.author.name}} {{item.author.surname}}</td>
       <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;" class="td" class="ion-text-left"> {{item.category.name}}</td>
       <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;"class="td" class="ion-text-left">
-      <ion-button style="color: #0d2f60;" fill="clear" (click)="cambiaVisione(item.name, item.description, item.type, item.author.id, item.author.name, item.author.surname, item.category.id, item.category.name, item.id)"><ion-icon *ngIf="cerca[i]" name="pencil-outline" style="margin: 1%;"></ion-icon></ion-button>
-      <ion-button style="color: #0d2f60;" fill="clear" (click)="mandaPopup(item.id, item.name, item.description, item.type, item.author.id , item.author.name, item.author.surname, item.category.id, item.category.name)"><ion-icon *ngIf="cerca[i]" name="trash" style="margin: 1%; margin-left: 10%;"></ion-icon></ion-button>
+      <ion-button style="color: #0d2f60;" fill="clear" (click)="cambiaVisione(item.name, item.description, item.type, item.author.id, item.author.name, item.author.surname, item.category.name, item.id)"><ion-icon *ngIf="cerca[i]" name="pencil-outline" style="margin: 1%;"></ion-icon></ion-button>
+      <ion-button style="color: #0d2f60;" fill="clear" (click)="mandaPopup(item.id, item.name, item.description, item.type, item.author.id , item.author.name, item.author.surname,  item.category.name)"><ion-icon *ngIf="cerca[i]" name="trash" style="margin: 1%; margin-left: 10%;"></ion-icon></ion-button>
       </td>
     </tr>
   </table>
@@ -144,7 +144,7 @@
         <ion-col>
         </ion-col>
         <ion-col>
-          <h1 style="font-weight: bold; font-size: 30px"> Modifica autore </h1>
+          <h1 style="font-weight: bold; font-size: 30px"> Modifica fumetto </h1>
         </ion-col>
         <ion-col>
         </ion-col>
@@ -236,7 +236,7 @@
         </ion-app> -->
           <ion-item> 
             <ion-label class="col-sm-2 col-form-label" for="category" position="floating">Categoria</ion-label>
-            <ion-input placeholder="ID categoria" id="category" [(ngModel)]="categoryID"> 
+            <ion-input placeholder="ID categoria" id="category" [(ngModel)]="categoryName"> 
             </ion-input>
           </ion-item>
         </ion-col> 

@@ -20,10 +20,10 @@ export class ListaFumettiPage implements OnInit {
   type: string = "";
   authorName: string = "";
   authorSurname: string = "";
-  category: string = "";
+  category:string= "";
   id: string = "";
   authorID: number = null;
-  categoryID: number = null;
+  categoryName: string = "";
 
   lastNome: string = "";
   lastDescription: string = "";
@@ -33,7 +33,7 @@ export class ListaFumettiPage implements OnInit {
   lastCategory: string = "";
   lastID: string = "";
   lastAuthorID: number = null;
-  lastCategoryID: number = null;
+  lastCategoryName: string = "";
 
   cerca: boolean[] = [];
 
@@ -61,7 +61,7 @@ export class ListaFumettiPage implements OnInit {
     this.authorID = null;
     this.authorName = "";
     this.authorSurname = "";
-    this.categoryID = null;
+    this.categoryName ="";
     this.category = "";
 
     this.stampa();
@@ -115,7 +115,7 @@ export class ListaFumettiPage implements OnInit {
 
   }
 
-  cambiaVisione(nome: string, description: string, type: string, authorID: number , authorName: string, authorSurname: string , categoryID: number , category: string, id: string) {
+  cambiaVisione(nome: string, description: string, type: string, authorID: number , authorName: string, authorSurname: string , categoryName:string , category: string, id: string) {
     
     this.cambiaPagina();
 
@@ -125,7 +125,7 @@ export class ListaFumettiPage implements OnInit {
     this.authorID = authorID;
     this.authorName = authorName;
     this.authorSurname = authorSurname;
-    this.categoryID = categoryID;
+    this.categoryName = categoryName;
     this.category = category;
     this.id = id;
 
@@ -144,7 +144,7 @@ export class ListaFumettiPage implements OnInit {
       this.authorID = null;
       this.authorName = "";
       this.authorSurname = "";
-      this.categoryID = null;
+      this.categoryName = null;
       this.category = "";
 
       this.pagina = true;
@@ -173,7 +173,7 @@ export class ListaFumettiPage implements OnInit {
 
   updateFumetto() {
 
-    this.comic.updateFumetti(this.id, this.nome, this.description, this.type, this.authorID , this.categoryID).subscribe(resp => {
+    this.comic.updateFumetti(this.id, this.nome, this.description, this.type, this.authorID , this.categoryName).subscribe(resp => {
         
       const data: ListaFumettiDto = resp;
 
@@ -204,7 +204,7 @@ export class ListaFumettiPage implements OnInit {
       
     }, error => {
       //grazie al nostro fratellino indiano
-      this.mandaPopup(this.id, this.nome, this.description, this.type, this.authorID , this.authorName, this.authorSurname, this.categoryID , this.category);
+      this.mandaPopup(this.id, this.nome, this.description, this.type, this.authorID , this.authorName, this.authorSurname, this.categoryName , this.category);
       alert("Si è verificato un errore durante l'eliminazione del fumetto");
     })
 
@@ -212,7 +212,7 @@ export class ListaFumettiPage implements OnInit {
 
   }
 
-  mandaPopup(id: string, nome: string, description: string, type: string, authorID: number , authorName: string, authorSurname: string , categoryID: number , category: string ) {
+  mandaPopup(id: string, nome: string, description: string, type: string, authorID: number , authorName: string, authorSurname: string , categoryName: string , category: string ) {
     
     if (!this.popup) {
 
@@ -224,7 +224,7 @@ export class ListaFumettiPage implements OnInit {
       this.authorID = authorID;
       this.lastAuthorName = authorName;
       this.lastAuthorSurname = authorSurname;
-      this.categoryID = categoryID
+      this.categoryName = categoryName
       this.lastCategory = category;
       this.lastID = id;
 
@@ -239,7 +239,7 @@ export class ListaFumettiPage implements OnInit {
       this.authorID = null;
       this.lastAuthorName = "";
       this.lastAuthorSurname = "";
-      this.categoryID = null;
+      this.categoryName = null;
       this.lastCategory = "";
       this.lastID = "";
 
@@ -252,7 +252,7 @@ export class ListaFumettiPage implements OnInit {
 
     if (opt) {
      
-      this.mandaPopup(this.id, this.nome, this.description, this.type, this.authorID , this.authorName, this.authorSurname, this.categoryID , this.category);
+      this.mandaPopup(this.id, this.nome, this.description, this.type, this.authorID , this.authorName, this.authorSurname, this.categoryName , this.category);
       this.popupElimina = false;
 
     }
@@ -267,7 +267,7 @@ export class ListaFumettiPage implements OnInit {
 
   annulla() {
     
-    this.mandaPopup(this.id, this.nome, this.description, this.type, this.authorID , this.authorName, this.authorSurname, this.categoryID , this.category);
+    this.mandaPopup(this.id, this.nome, this.description, this.type, this.authorID , this.authorName, this.authorSurname, this.categoryName, this.category);
     this.reset();
 
   }

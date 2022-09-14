@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UpdateAutoreCommand } from 'src/app/models/autori/author-command';
+import {  UpdateAutoreCommand } from 'src/app/models/autori/author-command';
+import { AuthorDTO, AuthorListDTO } from 'src/app/models/autori/author-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ListaAutoriService {
 
   stampaAutori() {
 
-    return this.http.post<any>("http://2.44.173.210:7080/comic-be/api/author/search/", {}); 
+    return this.http.get<AuthorListDTO>("http://localhost:8080/author/list", {}); 
 
   }
 
@@ -26,13 +27,13 @@ export class ListaAutoriService {
     user.name = name;
     user.surname = surname;
 
-    return this.http.put<any>("http://2.44.173.210:7080/comic-be/api/author/update/", user);
+    return this.http.put<AuthorDTO>("http://localhost:8080/author/update/"+id, user);
 
   }
 
   eliminaAutori(id: number) {
 
-    return this.http.delete<any>("http://2.44.173.210:7080/comic-be/api/author/delete/"+id, this.options);
+    return this.http.delete<any>("http://localhost:8080/author/delete/"+id, this.options);
 
   }
 

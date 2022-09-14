@@ -5,11 +5,7 @@ export class AuthorCommand {
 
 }
 
-export class AuthorDTO {
 
-    list : List[];
-
-}
 
 export class List {
 

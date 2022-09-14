@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserDTO, UserListDTO } from 'src/app/models/user/user-dto';
-import { ListaUtentiService } from './lista-utenti.service';
+import { UtentiService } from './lista-utenti.service';
 
 @Component({
   selector: 'app-lista-utenti',
@@ -37,7 +37,7 @@ export class ListaUtentiPage implements OnInit {
 
   attivo: boolean = false;
 
-  constructor(private user : ListaUtentiService) { }
+  constructor(private userService : UtentiService) { }
 
   reset() {
 
@@ -57,7 +57,7 @@ export class ListaUtentiPage implements OnInit {
 
   stampa() {
     
-    this.user.stampaUtenti().subscribe(res => {
+    this.userService.stampaUtenti().subscribe(res => {
         
       this.data = res;
       
@@ -168,7 +168,7 @@ export class ListaUtentiPage implements OnInit {
 
   updateUtente() {
 
-    this.user.updateUtenti(this.id, this.nome, this.cognome, this.email, this.password).subscribe(resp => {
+    this.userService.updateUtenti(this.id, this.nome, this.cognome, this.email, this.password).subscribe(resp => {
         
       console.log("Entra");
 
@@ -176,8 +176,9 @@ export class ListaUtentiPage implements OnInit {
 
       console.log(data);
 
-      alert("È stato fatto l'update di " + data.name + " " + data.surname + " "  + data.email + "!");
-      
+      alert("È stato fatto l'update di " + data.name + " " + data.surname + " "  + data.username + "!");
+      this.cambiaPagina()
+      this.reset()
     }, error => {
       this.password=""; //grazie al nostro fratellino indiano
       alert("Si è verificato un errore");
@@ -187,7 +188,7 @@ export class ListaUtentiPage implements OnInit {
 
   elimina() {
     
-    this.user.eliminaUtenti(this.lastID).subscribe(resp => {
+    this.userService.eliminaUtenti(this.lastID).subscribe(resp => {
 
       console.log(resp);
 

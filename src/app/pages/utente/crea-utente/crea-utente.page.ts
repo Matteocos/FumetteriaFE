@@ -12,7 +12,7 @@ export class CreaUtentePage implements OnInit {
 
   name: string;
   surname: string;
-  email: string;
+  username: string;
   password: string;
 
   disabilita: boolean = true;
@@ -21,6 +21,8 @@ export class CreaUtentePage implements OnInit {
 
   tipo: string = "password";
   eye: string = "lock-open-sharp";
+  pagina: boolean = true;
+
 
   eventoBottone(): void{
     
@@ -32,7 +34,7 @@ export class CreaUtentePage implements OnInit {
     }
       
 
-    if (this.formLogin.get("email").valid && this.formLogin.get("password").valid)
+    if (this.formLogin.get("username").valid && this.formLogin.get("password").valid)
       this.disabilita = false;
     else
       this.disabilita = true;
@@ -65,11 +67,16 @@ export class CreaUtentePage implements OnInit {
     }
       
 
-  } 
+  }
+  cambiaPagina(){
+    if(this.pagina == true)
+    this.pagina = false;
+
+  }
 
   creaUtente() {
     
-    this.user.creaUtente(this.name, this.surname, this.email, this.password).subscribe(resp => {
+    this.user.creaUtente(this.name, this.surname, this.username, this.password).subscribe(resp => {
         
       console.log("Entra");
 
@@ -80,6 +87,8 @@ export class CreaUtentePage implements OnInit {
       this.reset();
 
       alert("È stato aggiunto " + data.name + " " + data.surname + "!");
+      location.href = '/lista-utenti'
+      this.reset()
       
     }, error => {
       this.password=""; //grazie al nostro fratellino indiano
@@ -92,7 +101,7 @@ export class CreaUtentePage implements OnInit {
     
     this.name = "";
     this.surname = "";
-    this.email = "";
+    this.username = "";
     this.password = "";
 
   }
@@ -103,7 +112,7 @@ export class CreaUtentePage implements OnInit {
     this.formLogin = this.fb.group({
       name: ['',[Validators.required]],
       surname:['',[Validators.required]],
-      email: ['',[Validators.required, Validators.email]],
+      username: ['',[Validators.required, Validators.email]],
       password:['',[Validators.pattern,Validators.required, Validators.minLength(4)]],
   })
   }

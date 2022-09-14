@@ -54,15 +54,15 @@
     <tr style="background-color: #19356e ; width: 100%;text-align: center; color: white; border: 5px solid #19356e ">
       <td style="border: 5px  solid #19356e" class="ion-text-left">NOME</td>
       <td style="border: 5px  solid #19356e" class="ion-text-left">COGNOME</td>
-      <td style="border: 5px  solid #19356e" class="ion-text-left">EMAIL</td>
+      <td style="border: 5px  solid #19356e" class="ion-text-left">USERNAME</td>
       <td style="border: 5px  solid #19356e" class="ion-text-left">AZIONE</td>
     </tr>
     <tr *ngFor="let item of data.list; index as i" style="background-color:#d2c9c9 ;text-align: center;">
       <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;" class="td" class="ion-text-left">{{item.name}}</td>
       <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;" class="td" class="ion-text-left"> {{item.surname}}</td>
-      <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;" class="td" class="ion-text-left"> {{item.email}}</td>
+      <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;" class="td" class="ion-text-left"> {{item.username}}</td>
       <td *ngIf="cerca[i]" style="border: 5px  solid #d2c9c9;;"class="td" class="ion-text-left">
-      <ion-button style="color: #0d2f60;" fill="clear" (click)="cambiaVisione(item.name, item.surname, item.email, item.id)"><ion-icon *ngIf="cerca[i]" name="pencil-outline" style="margin: 1%;"></ion-icon></ion-button>
+      <ion-button style="color: #0d2f60;" fill="clear" (click)="cambiaVisione(item.name, item.surname, item.username, item.id)"><ion-icon *ngIf="cerca[i]" name="pencil-outline" style="margin: 1%;"></ion-icon></ion-button>
       <ion-button style="color: #0d2f60;" fill="clear" (click)="mandaPopup(item.id, item.name, item.surname)"><ion-icon *ngIf="cerca[i]" name="trash" style="margin: 1%; margin-left: 10%;"></ion-icon></ion-button>
       </td>
     </tr>
@@ -82,7 +82,7 @@
            </div>
            <div class="modal-footer" >
              <ion-button fill="clear" type="button" class="btn btn-secondary" class="bottoni" shape="round" data-dismiss="modal" (click)="annulla()">Annulla</ion-button>
-             <ion-button type="button" class="btn btn-danger" class="bottoni" style="position: relative; right: -26%;" shape="round" (click)="elimina()">Elimina</ion-button>
+             <ion-button type="button" class="btn btn-danger" class="bottoni" style="position: relative; right: -11%;" shape="round" (click)="elimina()">Elimina</ion-button>
            </div>
          </div>
        </div>

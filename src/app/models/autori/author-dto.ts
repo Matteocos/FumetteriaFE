@@ -11,3 +11,11 @@ export class List {
     surname: string;
 
 }
+export class AuthorDTO {
+
+    id: number;
+    name: string;
+    surname: string;
+   
+
+}
